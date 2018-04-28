@@ -61,11 +61,11 @@ public class SingleColumnShardingStragy implements JobShardingStrategy {
 		StringBuffer shardingItemParametersBuffer = new StringBuffer();
 		for(Map<String, String> columnMap : columnCountList){
 			for(String key : columnMap.keySet()){
-				if(key.equals(shardingColumn)){
+				if(key.equalsIgnoreCase(shardingColumn)){
 					shardingItemParametersBuffer.append(",");
 					shardingItemParametersBuffer.append(columnCountList.indexOf(columnMap));
 					shardingItemParametersBuffer.append("=");
-					shardingItemParametersBuffer.append(columnMap.get(shardingColumn));
+					shardingItemParametersBuffer.append(columnMap.get(key));
 				}
 			}
 		}
